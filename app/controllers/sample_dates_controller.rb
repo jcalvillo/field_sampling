@@ -51,8 +51,8 @@ class SampleDatesController < ApplicationController
     end
   end
 
-  # DELETE /sample_dates/1
-  # DELETE /sample_dates/1.json
+  #DELETE /sample_dates/1
+  #DELETE /sample_dates/1.json
   def destroy
     @sample_date.destroy
     respond_to do |format|
