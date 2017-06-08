@@ -16,7 +16,6 @@ gem 'coffee-rails', '~> 4.0.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 gem 'pg',          group: :production
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -31,6 +30,9 @@ gem 'spring',          group: :development
 
 #for windows
 gem 'tzinfo-data',          platforms: [:mingw, :mswin, :x64_mingw]
+
+#suggested upon >git push heroku master
+gem 'rails_12factor'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
