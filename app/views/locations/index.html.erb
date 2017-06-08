@@ -47,3 +47,8 @@
 <br>
 
 <%= link_to 'New Location', new_location_path %>
+
+<%= form_tag locations_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>

@@ -23,3 +23,8 @@
 <br>
 
 <%= link_to 'New Sample date', new_sample_date_path %>
+
+<%= form_tag sample_dates_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>

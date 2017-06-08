@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
-    
+
   end
 
   # GET /locations/new
@@ -73,3 +73,7 @@ class LocationsController < ApplicationController
       params.require(:location).permit(:id, :latitude, :longitude, :sample_time, :city, :ranch, :field, :site, :grower, :block_id, :variety, :acres, :client)
     end
 end
+
+def import
+   Users.import(params[:file])
+  end

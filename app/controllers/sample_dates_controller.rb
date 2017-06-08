@@ -72,3 +72,7 @@ class SampleDatesController < ApplicationController
       params.require(:sample_date).permit(:sample_date)
     end
 end
+
+def import
+   Users.import(params[:file])
+  end
