@@ -24,7 +24,9 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  database: field_samples_production
+  database: d4ceqaf0t45orc
   pool: 5
   username: jmnkqoytcuhato
   password: 3e52c7f8d69d6b6f3740e4642da5dd949797f05d5788747498b547007b320065
+  host: ec2-50-19-219-69.compute-1.amazonaws.com
+  port: 5432
