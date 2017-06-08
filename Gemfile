@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.11'
 # Use sqlite3 as the database for Active Record
 
-gem 'sqlite3',        group: :development
+gem 'sqlite3',          group: :development
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -15,7 +15,7 @@ gem 'coffee-script-source', '1.8.0'
 gem 'coffee-rails', '~> 4.0.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-gem 'pg', group: :production
+gem 'pg',          group: :production
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -27,10 +27,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'spring',          group: :development
 
 #for windows
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+gem 'tzinfo-data',          platforms: [:mingw, :mswin, :x64_mingw]
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

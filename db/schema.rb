@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608031127) do
+ActiveRecord::Schema.define(version: 20170608031759) do
+
+  create_table "location_sample_date", force: true do |t|
+    t.integer "location_id"
+    t.integer "sample_date_id"
+  end
 
   create_table "locations", force: true do |t|
     t.decimal  "latitude"

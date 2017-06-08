@@ -1,9 +1,8 @@
 # SQLite version 3.x
 #   gem install sqlite3
-#
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
-#
+
 default: &default
   adapter: sqlite3
   pool: 5
@@ -30,3 +29,6 @@ production:
   password: 3e52c7f8d69d6b6f3740e4642da5dd949797f05d5788747498b547007b320065
   host: ec2-50-19-219-69.compute-1.amazonaws.com
   port: 5432
+
+#   Ensure the Pogtres gem is defined in your Gemfile
+#   gem 'pg'
