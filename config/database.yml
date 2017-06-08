@@ -26,5 +26,5 @@ production:
   encoding: unicode
   database: field_samples_production
   pool: 5
-  username: postgres
-  password:
+  username: jmnkqoytcuhato
+  password: 3e52c7f8d69d6b6f3740e4642da5dd949797f05d5788747498b547007b320065
