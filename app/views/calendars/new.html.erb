@@ -1,0 +1,15 @@
+<h1>Create a Calendar Entry</h1> <br />
+
+<br />
+
+<%= form_for @date do |f| %>
+
+    <%= f.label :date %> <br />
+    <%= f.date_field :date %> <br />
+
+    <br />
+
+    <%= f.submit 'Submit'%>
+
+
+<% end %>

@@ -1,0 +1,19 @@
+<h1>AGQ Labs Sampling Calendar</h1> <br />
+
+<h2><font color="blue">Add Dates:</font></h2>
+
+<h3>&#x2219 <%= link_to 'Manually', new_calendar_path %></h3>
+
+<h3>&#x2219 Import<font color="red"> CSV</font></h3>
+  <%= form_tag import_calendars_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Dates" %>
+<% end %> <br />
+
+
+<h2><font color="blue">Index of all dates:</font></h2>
+<% @date.each do |date| %>
+    <p>
+      Date: <%= link_to date.date, calendar_path(date) %> | <%= link_to 'Destroy', method: :delete %>
+    </p>
+<% end %>

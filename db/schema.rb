@@ -11,32 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608031759) do
+ActiveRecord::Schema.define(version: 20170609054059) do
 
-  create_table "location_sample_date", force: true do |t|
-    t.integer "location_id"
-    t.integer "sample_date_id"
-  end
-
-  create_table "locations", force: true do |t|
-    t.decimal  "latitude"
-    t.decimal  "longitude"
-    t.integer  "sample_time"
-    t.string   "city"
-    t.string   "ranch"
-    t.string   "field"
-    t.string   "site"
-    t.string   "grower"
-    t.string   "block_id"
-    t.string   "variety"
-    t.decimal  "acres"
-    t.string   "client"
+  create_table "calendars", force: true do |t|
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sample_dates", force: true do |t|
-    t.date     "sample_date"
+  create_table "locations", force: true do |t|
+    t.text     "client"
+    t.text     "city"
+    t.text     "ranchfield"
+    t.text     "grower"
+    t.text     "siteblock"
+    t.text     "variety"
+    t.integer  "acres"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
