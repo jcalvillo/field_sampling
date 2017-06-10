@@ -12,8 +12,10 @@
 
 
 <h2><font color="blue">Index of all dates:</font></h2>
+
 <% @date.each do |date| %>
     <p>
       Date: <%= link_to date.date, calendar_path(date) %> | <%= link_to 'Destroy', method: :delete %>
     </p>
-<% end %> 
+
+<% end %>

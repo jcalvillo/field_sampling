@@ -1,0 +1,17 @@
+<h1>Sampling Location Details</h1>
+
+<h3>Client | City | Ranch/Field ID | Grower | Site/Bock ID | Variety | Acres | Latitude | Longitude</h3>
+
+<%= @location.client %>
+<%= @location.city %>
+<%= @location.ranchfield %>
+<%= @location.grower %>
+<%= @location.siteblock %>
+<%= @location.variety %>
+<%= @location.acres %>
+<%= @location.latitude %>
+<%= @location.longitude %> <br />
+
+<br />
+
+<%= link_to 'Go back', locations_path %>

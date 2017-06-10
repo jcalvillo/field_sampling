@@ -1,19 +1,33 @@
-AGQ Labs Sampling Locations <br />
+<h1>AGQ Labs Sampling Locations</h1> <br />
 
-<%= link_to 'Add Location', new_location_path %>
+<h2><font color="blue">Add Locations:</font></h2>
 
-<%= @locations.each do |f| %>
-    <p>
+<h3>&#x2219 <%= link_to 'Manually', new_location_path %></h3>
 
-      Client: <%= f.client %><br />
-      City: <%= f.city %><br />
-      Ranch/field ID: <%= f.ranchfield %><br />
-      Grower: <%= f.grower %><br />
-      Site/block ID: <%= f.siteblock %><br />
-      Variety: <%= f.variety %><br />
-      Acres: <%= f.acres %><br />
-      Latitude: <%= f.latitude %><br />
-      Longitude: <%= f.longitude %><br />
+<h3>&#x2219 Import<font color="red"> CSV</font></h3>
+  <%= form_tag import_locations_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Locations" %>
+<% end %> <br />
 
+<h2><font color="blue">Index of all locations:</font></h2>
+
+<h3>
+  Client | City | Ranchfield | Grower | siteblock | variety | acres | latitude | longitude
+</h3>
+
+<% @locations.each do |location| %>
+      <%= location.client %> |
+      <%= location.client %> |
+      <%= location.city %> |
+      <%= location.ranchfield %> |
+      <%= location.grower %> |
+      <%= location.siteblock %> |
+      <%= location.variety %> |
+      <%= location.acres %> |
+      <%= location.latitude %> |
+      <%= location.longitude %> |
+      <%= link_to 'Edit', edit_location_path(location) %> |
+      <%= link_to 'Destroy', method: :delete %>
     </p>
-<% end %>
+    <% end %>
