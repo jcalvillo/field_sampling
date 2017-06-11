@@ -1,31 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 
-  latitude: 
-  longitude: 
-  sample_time: 
-  city: MyString
-  ranch: MyString
-  field: MyString
-  site: MyString
-  grower: MyString
-  block_id: MyString
-  variety: MyString
-  acres: 1.5
-  client: 
+  name: MyString
+  string: MyString
+  bio: MyText
+  age: 1
 
 two:
-  id: 
-  latitude: 
-  longitude: 
-  sample_time: 
-  city: MyString
-  ranch: MyString
-  field: MyString
-  site: MyString
-  grower: MyString
-  block_id: MyString
-  variety: MyString
-  acres: 1.5
-  client: 
+  name: MyString
+  string: MyString
+  bio: MyText
+  age: 1

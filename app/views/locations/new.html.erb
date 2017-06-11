@@ -1,5 +1,37 @@
-<h1>New location</h1>
+<h1>Create a Sampling Location</h1> <br />
 
-<%= render 'form' %>
+<br />
 
-<%= link_to 'Back', locations_path %>
+<%= form_for @location do |f| %>
+
+<%= f.label :client %> <br />
+<%= f.date_field :client %> <br />
+
+<%= f.label :city %> <br />
+<%= f.date_field :city %> <br />
+
+<%= f.label :ranchfield %> <br />
+<%= f.date_field :ranchfield %> <br />
+
+<%= f.label :grower %> <br />
+<%= f.date_field :grower %> <br />
+
+<%= f.label :siteblock %> <br />
+<%= f.date_field :siteblock %> <br />
+
+<%= f.label :variety %> <br />
+<%= f.date_field :variety %> <br />
+
+<%= f.label :acres %> <br />
+<%= f.date_field :acres %> <br />
+
+<%= f.label :latitude %> <br />
+<%= f.date_field :latitude %> <br />
+
+<%= f.label :longitude %> <br />
+<%= f.date_field :longitude %> <br />
+
+<%= f.submit 'Submit'%> <br />
+
+
+<% end %>

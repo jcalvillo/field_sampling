@@ -1,6 +1,35 @@
-<h1>Editing location</h1>
+<h1>Edit Sampling Location</h1>
 
-<%= render 'form' %>
+<%= form_for @location do |f| %>
 
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %>
+    <h3><%= f.label :client %> <br /></h3>
+    <%= f.text_field :client %> <br />
+
+    <h3><%= f.label :city %> <br /></h3>
+    <%= f.text_field :city %> <br />
+
+    <h3><%= f.label :ranchfield %> <br /></h3>
+    <%= f.text_field :ranchfield %> <br />
+
+    <h3><%= f.label :grower %> <br /></h3>
+    <%= f.text_field :grower %> <br />
+
+    <h3><%= f.label :siteblock %> <br /></h3>
+    <%= f.text_field :siteblock %> <br />
+
+    <h3><%= f.label :variety %> <br /></h3>
+    <%= f.text_field :variety %> <br />
+
+    <h3><%= f.label :acres %> <br /></h3>
+    <%= f.text_field :acres %> <br />
+
+    <h3><%= f.label :latitude %> <br /></h3>
+    <%= f.text_field :latitude %> <br />
+
+    <h3><%= f.label :longitude %> <br /></h3>
+    <%= f.text_field :longitude %> <br /><br />
+
+    <%= f.submit 'Submit'%> <br /><br />
+    <%= link_to 'Go back', locations_path %>
+
+<% end %>

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  resources :sample_dates
-  resources :locations
+  resources :locations do
+    collection {post :import }
+  end
+  resources :calendars do
+    collection { post :import }
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

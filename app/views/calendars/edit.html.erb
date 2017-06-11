@@ -1,0 +1,11 @@
+<h1>Don't edit a Calendar Entry, edit a different table</h1> <br />
+<%= form_for @date do |f| %>
+
+    <%= f.label :date %> <br />
+    <%= f.date_field :date %> <br />
+
+    #Don't do this -------><%= f.submit %> <br />
+    <%= link_to 'Go back', calendars_path %>
+
+
+<% end %>

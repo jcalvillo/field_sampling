@@ -1,69 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h1>Sampling Location Details</h1>
 
-<p>
-  <strong>Id:</strong>
-  <%= @location.id %>
-</p>
+<h3>Client | City | Ranch/Field ID | Grower | Site/Bock ID | Variety | Acres | Latitude | Longitude</h3>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
-</p>
+<%= @location.client %>
+<%= @location.city %>
+<%= @location.ranchfield %>
+<%= @location.grower %>
+<%= @location.siteblock %>
+<%= @location.variety %>
+<%= @location.acres %>
+<%= @location.latitude %>
+<%= @location.longitude %> <br />
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
-</p>
+<br />
 
-<p>
-  <strong>Sample time:</strong>
-  <%= @location.sample_time %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @location.city %>
-</p>
-
-<p>
-  <strong>Ranch:</strong>
-  <%= @location.ranch %>
-</p>
-
-<p>
-  <strong>Field:</strong>
-  <%= @location.field %>
-</p>
-
-<p>
-  <strong>Site:</strong>
-  <%= @location.site %>
-</p>
-
-<p>
-  <strong>Grower:</strong>
-  <%= @location.grower %>
-</p>
-
-<p>
-  <strong>Block:</strong>
-  <%= @location.block_id %>
-</p>
-
-<p>
-  <strong>Variety:</strong>
-  <%= @location.variety %>
-</p>
-
-<p>
-  <strong>Acres:</strong>
-  <%= @location.acres %>
-</p>
-
-<p>
-  <strong>Client:</strong>
-  <%= @location.client %>
-</p>
-
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to 'Go back', locations_path %>

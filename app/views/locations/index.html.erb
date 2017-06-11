@@ -1,49 +1,32 @@
-<h1>Listing locations</h1>
+<h1>AGQ Labs Sampling Locations</h1> <br />
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Sample time</th>
-      <th>City</th>
-      <th>Ranch</th>
-      <th>Field</th>
-      <th>Site</th>
-      <th>Grower</th>
-      <th>Block</th>
-      <th>Variety</th>
-      <th>Acres</th>
-      <th>Client</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h2><font color="blue">Add Locations:</font></h2>
 
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.id %></td>
-        <td><%= location.latitude %></td>
-        <td><%= location.longitude %></td>
-        <td><%= location.sample_time %></td>
-        <td><%= location.city %></td>
-        <td><%= location.ranch %></td>
-        <td><%= location.field %></td>
-        <td><%= location.site %></td>
-        <td><%= location.grower %></td>
-        <td><%= location.block_id %></td>
-        <td><%= location.variety %></td>
-        <td><%= location.acres %></td>
-        <td><%= location.client %></td>
-        <td><%= link_to 'Show', location %></td>
-        <td><%= link_to 'Edit', edit_location_path(location) %></td>
-        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<h3>&#x2219 <%= link_to 'Manually', new_location_path %></h3>
+
+<h3>&#x2219 Import<font color="red"> CSV</font></h3>
+  <%= form_tag import_locations_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Locations" %>
+<% end %> <br />
+
+<h2><font color="blue">Index of all locations:</font></h2>
+
+<h3>
+  Client | City | Ranchfield | Grower | siteblock | variety | acres | latitude | longitude
+</h3>
+
+<% @locations.each do |location| %>
+      <%= location.client %> |
+      <%= location.city %> |
+      <%= location.ranchfield %> |
+      <%= location.grower %> |
+      <%= location.siteblock %> |
+      <%= location.variety %> |
+      <%= location.acres %> |
+      <%= location.latitude %> |
+      <%= location.longitude %> |
+      <%= link_to 'Edit', edit_location_path(location) %> |
+      <%= link_to 'Destroy', method: :delete %>
+    </p>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Location', new_location_path %>
