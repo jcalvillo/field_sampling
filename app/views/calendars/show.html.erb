@@ -4,6 +4,22 @@
 
 <%= @date.date %> <br />
 
+<% if @date.locations.size > 0 %>
+  <h3>Client | City | Ranch/Field ID | Grower | Site/Bock ID | Variety | Acres | Latitude | Longitude</h3>
+  <% @date.locations.each do |location| %>
+    <%= location.client %>
+    <%= location.city %>
+    <%= location.ranchfield %>
+    <%= location.grower %>
+    <%= location.siteblock %>
+    <%= location.variety %>
+    <%= location.acres %>
+    <%= location.latitude %>
+    <%= location.longitude %> <br />
+  <% end %>
+  <br />
+
+<% end %>
 <br />
 
 <%= link_to 'Go back', calendars_path %>
