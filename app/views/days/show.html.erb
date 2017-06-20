@@ -1,4 +1,4 @@
-<h1>Date Entry Details</h1> <br />
+<h1>Day Entry Details</h1> <br />
 
 <br />
 
@@ -6,7 +6,7 @@
 
 <% if @date.locations.size > 0 %>
   <h3>Client | City | Ranch/Field ID | Grower | Site/Bock ID | Variety | Acres | Latitude | Longitude</h3>
-  <% @date.locations.each do |location| %>
+  <% @day.locations.each do |location| %>
     <%= location.client %>
     <%= location.city %>
     <%= location.ranchfield %>
@@ -22,4 +22,4 @@
 <% end %>
 <br />
 
-<%= link_to 'Go back', calendars_path %>
+<%= link_to 'Go back', days_path %>

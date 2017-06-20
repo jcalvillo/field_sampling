@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :locations do
     collection {post :import }
   end
-  resources :calendars do
+  resources :days do
     collection { post :import }
   end
   # The priority is based upon order of creation: first created -> highest priority.

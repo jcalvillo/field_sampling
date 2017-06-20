@@ -2,20 +2,20 @@
 
 <h2><font color="blue">Add Dates:</font></h2>
 
-<h3>&#x2219 <%= link_to 'Manually', new_calendar_path %></h3>
+<h3>&#x2219 <%= link_to 'Manually', new_day_path %></h3>
 
 <h3>&#x2219 Import<font color="red"> CSV</font></h3>
-  <%= form_tag import_calendars_path, multipart: true do %>
+  <%= form_tag import_days_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Upload Dates" %>
+  <%= submit_tag "Upload Days" %>
 <% end %> <br />
 
 
 <h2><font color="blue">Index of all dates:</font></h2>
 
-<% @date.each do |date| %>
+<% @dates.each do |date| %>
     <p>
-      Date: <%= link_to date.date, calendar_path(date) %> | <%= link_to 'Destroy', method: :delete %>
+      Day: <%= link_to date.date, day_path(date) %> | <%= link_to 'Destroy', method: :delete %>
     </p>
 
 <% end %>
