@@ -17,9 +17,9 @@ class LocationsController < ApplicationController
 
     def create #save the new record
       #will save and redirect
-      @location = Location.new(:location) #should be allowed_params instead of :location
+      @location = Location.new(allowed_params)
 
-      if @date.save
+      if @location.save
         redirect_to locations_path
       else
         render "new"
@@ -34,7 +34,7 @@ class LocationsController < ApplicationController
 
     def update #save changes
       @location = Location.find(params[:id])
-      if @location.update_attributes(:location) #should be allowed_params instead of :date
+      if @location.update_attributes(allowed_params)
         redirect_to locations_path
       else
         render "new"
@@ -53,11 +53,10 @@ class LocationsController < ApplicationController
       redirect_to locations_path, notice: "Locations Added Successfully"
     end
 
-# UPDATE, CREATE should rever to (allowed params) b/c they need to be passed a HASH
-#   private
-#    def allowed_params
-#      params.require(:client).permit(:cit :ranchfield :grower :siteblock :variety :acres :latitude :longitude)
-#    end
+  private
+   def allowed_params
+     params.require(:location).permit(:client, :city, :ranchfield, :grower, :siteblock, :variety, :acres, :latitude, :longitude)
+   end
 end
 
 
