@@ -27,6 +27,6 @@
       <%= location.latitude %> |
       <%= location.longitude %> |
       <%= link_to 'Edit', edit_location_path(location) %> |
-      <%= link_to 'Destroy', method: :delete %>
+      <%= link_to 'Destroy', location, method: :delete %>
     </p>
     <% end %>
