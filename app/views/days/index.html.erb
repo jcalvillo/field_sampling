@@ -15,7 +15,7 @@
 
 <% @dates.each do |date| %>
     <p>
-      Day: <%= link_to date.date, day_path(date) %> | <%= link_to 'Destroy', method: :delete %>
+      Day: <%= link_to date.date, day_path(date) %> | <%= link_to 'Destroy', date, method: :delete %>
     </p>
 
 <% end %>

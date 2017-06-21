@@ -44,7 +44,7 @@ class DaysController < ApplicationController
      #will destroy and redirect
      @date = Day.find(params[:id])
      @date.destroy
-     redirect_to date_path
+     redirect_to days_path
    end
 
    def import
