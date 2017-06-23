@@ -1,34 +1,48 @@
-<h1>AGQ Labs Sampling Locations</h1> <br />
+<h1>AGQ Labs USA</h1><h2>Sampling Calendar</h2>
+<%= link_to "Locations", locations_path %> | <%= link_to "Dates", days_path %>
+<hr>
 
-<h2><font color="blue">Add Locations:</font></h2>
 
-<h3>&#x2219 <%= link_to 'Manually', new_location_path %></h3>
+<h2><font color="green">Add Locations:</font></h2>
 
-<h3>&#x2219 Import<font color="red"> CSV</font></h3>
-  <%= form_tag import_locations_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Upload Locations" %>
-<% end %> <br />
+  <h3>&#x2219 <%= link_to 'Manually', new_location_path %></h3>
 
-<h2><font color="blue">Index of all locations:</font></h2>
+  <h3>&#x2219 Import CSV</h3>
+    <%= form_tag import_locations_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Upload" %>
+  <% end %> <br />
+<hr>
 
-<h3>
-  Client | City | Ranchfield | Grower | siteblock | variety | acres | latitude | longitude
-</h3>
+<h2><font color="green">Index of all Locations:</font></h2>
+
+<table border="1">
+  <tr>
+    <th>Client</th>
+    <th>City</th>
+    <th>Ranch/Field ID</th>
+    <th>Grower</th>
+    <th>Site/Block ID</th>
+    <th>Variety</th>
+    <th>Acres</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Actions</th>
+  </tr>
 
 <% @locations.each do |location| %>
-      <%= location.client %> |
-      <%= location.city %> |
-      <%= location.ranchfield %> |
-      <%= location.grower %> |
-      <%= location.siteblock %> |
-      <%= location.variety %> |
-      <%= location.acres %> |
-      <%= location.latitude %> |
-      <%= location.longitude %> |
-      (<%= link_to 'Edit', edit_location_path(location) %> |
-      <%= link_to 'Destroy', location, method: :delete %>) |
-
-      <%= link_to 'Schedule New Sample', location_path(location)  %>
-    </p>
+  <tr>
+      <td><%= location.client %></td>
+      <td><%= location.city %></td>
+      <td><%= location.ranchfield %></td>
+      <td><%= location.grower %></td>
+      <td><%= location.siteblock %></td>
+      <td><%= location.variety %></td>
+      <td><%= location.acres %></td>
+      <td><%= location.latitude %></td>
+      <td><%= location.longitude %></td>
+      <td>(<%= link_to 'Edit', edit_location_path(location) %> | <%= link_to 'Destroy', location, method: :delete %>) |
+      <%= link_to 'Schedule New Sample', location_path(location)  %></td>
+   </tr>
     <% end %>
+</table>

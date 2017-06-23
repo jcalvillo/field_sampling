@@ -6,4 +6,9 @@ class Location < ActiveRecord::Base
       Location.create! row.to_hash
     end
   end
+
+  def cb_label
+    "#{client}/#{city}/#{ranchfield}/#{grower}/#{siteblock}/#{variety}/#{acres}, (#{latitude}, #{longitude})"
+  end
+
 end

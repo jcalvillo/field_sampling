@@ -1,25 +1,58 @@
-<h1>Sampling Location Details</h1>
+<!--heading-->
+<h1>Location Details</h1>
+<%= link_to 'Go back', locations_path %>
+<hr>
 
-<b>Client</b> <%= @location.client %> <br />
-<b>City</b> <%= @location.city %> <br />
-<b>Ranch/Field ID</b> <%= @location.ranchfield %> <br />
-<b>Grower</b> <%= @location.grower %> <br />
-<b>Site/Block ID</b> <%= @location.siteblock %> <br />
-<b>Variety</b> <%= @location.variety %> <br />
-<b>Acres</b> <%= @location.acres %> <br />
-<b>Latitude</b> <%= @location.latitude %> <br />
-<b>Longitude</b> <%= @location.longitude %> <br />
+<!--record specification-->
+<table border="1">
+  <tr>
+    <th>Client</th>
+    <th>City</th>
+    <th>Ranch/Field ID</th>
+    <th>Grower</th>
+    <th>Site/Block ID</th>
+    <th>Variety</th>
+    <th>Acres</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+  <tr>
+    <td><%= @location.client %></td>
+    <td><%= @location.city %></td>
+    <td><%= @location.ranchfield %></td>
+    <td><%= @location.grower %></td>
+    <td><%= @location.siteblock %></td>
+    <td><%= @location.variety %></td>
+    <td><%= @location.acres %></td>
+    <td><%= @location.latitude %></td>
+    <td><%= @location.longitude %></td>
+  </tr>
+</table>
+<hr>
 
-<br />
+<!--make new associations?-->
+<h3><font color=blue>Schedule days for this location</font></h3>
+<%= simple_form_for @location do |f| %>
+  <%= f.association :days, as: :check_boxes, label_method: :date, value_method: :id %><br />
+  <%= f.button :submit, 'Assign to this location' %>
+<% end %>
+<hr>
 
-<% if @date.locations.size > 0 %>
+<!--associations display-->
+<h3><font color=blue>Days scheduled for sampling</font></h3>
+
+<% if @location.days.size > 0 %>
+  <table border="1">
+    <tr>
+      <th>Date</th>
+    </tr>
+
   <% @date.locations.each do |date| %>
-    <%= @date.date %> <br />
+    <tr>
+      <td><%= @date.date %></td>
     <% end %>
 
   <% else %>
-    No locations added to this date<br />
+    ...Such a lonely location with no dates<br />
 
-  <% end %> <br />
-
-<%= link_to 'Go back', locations_path %>
+  <% end %>

@@ -1,25 +1,30 @@
-<h1>AGQ Labs Sampling Calendar</h1> <br />
+<h1>AGQ Labs USA</h1><h2>Sampling Calendar</h2>
+<%= link_to "Locations", locations_path %> | <%= link_to "Dates", days_path %>
+<hr>
 
 <h2><font color="blue">Add Dates:</font></h2>
 
-<h3>&#x2219 <%= link_to 'Manually', new_day_path %></h3>
+  <h3>&#x2219 <%= link_to 'Manually', new_day_path %></h3>
 
-<h3>&#x2219 Import<font color="red"> CSV</font></h3>
-  <%= form_tag import_days_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Upload Days" %>
-<% end %> <br />
+  <h3>&#x2219 Import CSV</h3>
+    <%= form_tag import_days_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Upload" %>
+  <% end %> <br />
+<hr>
 
+<h2><font color="blue">Index of all Dates:</font></h2>
 
-<h2><font color="blue">Index of all dates:</font></h2>
+<table border="1">
+  <tr>
+    <th>Date</th>
+    <th>Actions</th>
+  </tr>
 
-<% @dates.each do |date| %>
-    <p>
-      <%= date.date %> |
-      |<%= link_to 'Add/Remove Locations', day_path(date)  %>
-<!--      <%= link_to 'Destroy', date, method: :delete %> <br /> -->
-
-
-    </p>
-
-<% end %>
+  <% @dates.each do |date| %>
+  <tr>
+    <td><%= date.date %></td>
+    <td><%= link_to 'Add/Remove Locations', day_path(date)  %></td>
+  </tr>
+  <% end %>
+</table>

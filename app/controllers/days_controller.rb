@@ -9,7 +9,7 @@ class DaysController < ApplicationController
    def show
      #will have template
      @date = Day.find(params[:id])
-     @location = Location.find(params[:id])
+     @location = Location.all
    end
 
    def new #display a new record
