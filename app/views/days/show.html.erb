@@ -1,12 +1,10 @@
-<h1>Day Entry Details</h1> <br />
+<h1>Scheduled Samples</h1>
 
-<br />
-
-<%= @date.date %> <br />
+<h3><%= @date.date %> <br /></h3>
 
 <% if @date.locations.size > 0 %>
   <h3>Client | City | Ranch/Field ID | Grower | Site/Bock ID | Variety | Acres | Latitude | Longitude</h3>
-  <% @day.locations.each do |location| %>
+  <% @date.locations.each do |location| %>
     <%= location.client %>
     <%= location.city %>
     <%= location.ranchfield %>
@@ -19,7 +17,17 @@
   <% end %>
   <br />
 
+  <% else %>
+    No locations added to this date<br />
+
 <% end %>
 <br />
 
-<%= link_to 'Go back', days_path %>
+<%= link_to 'Go back', days_path %><br />
+
+<br />
+
+<%= simple_form_for @date do |f| %>
+  <%= f.association :locations, as: :check_boxes, label_method: :client, value_method: :id %><br />
+  <%= f.button :submit, 'Assign to this date' %>
+<% end %>

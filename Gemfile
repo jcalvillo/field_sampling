@@ -34,6 +34,12 @@ gem 'tzinfo-data',          platforms: [:mingw, :mswin, :x64_mingw]
 #suggested upon >git push heroku master
 gem 'rails_12factor'
 
+#for visualizing db (http://railroady.prestonlee.com/)
+gem 'railroady'
+
+#for use with has_and_belongs_to_many (multiple checkboxes)
+gem 'simple_form'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

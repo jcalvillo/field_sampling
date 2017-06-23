@@ -3,11 +3,13 @@ class LocationsController < ApplicationController
     def index
       #will have template
       @locations = Location.all
+      @date = Day.all
     end
 
     def show
       #will have template
       @location = Location.find(params[:id])
+      @date = Day.find(params[:id])
     end
 
     def new #display a new record
@@ -44,7 +46,7 @@ class LocationsController < ApplicationController
     def destroy
       #will destroy and redirect
       @location = Location.find(params[:id])
-      @location.destory
+      @location.destroy
       redirect_to locations_path
     end
 

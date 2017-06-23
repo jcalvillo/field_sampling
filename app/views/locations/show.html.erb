@@ -1,17 +1,25 @@
 <h1>Sampling Location Details</h1>
 
-<h3>Client | City | Ranch/Field ID | Grower | Site/Bock ID | Variety | Acres | Latitude | Longitude</h3>
-
-<%= @location.client %>
-<%= @location.city %>
-<%= @location.ranchfield %>
-<%= @location.grower %>
-<%= @location.siteblock %>
-<%= @location.variety %>
-<%= @location.acres %>
-<%= @location.latitude %>
-<%= @location.longitude %> <br />
+<b>Client</b> <%= @location.client %> <br />
+<b>City</b> <%= @location.city %> <br />
+<b>Ranch/Field ID</b> <%= @location.ranchfield %> <br />
+<b>Grower</b> <%= @location.grower %> <br />
+<b>Site/Block ID</b> <%= @location.siteblock %> <br />
+<b>Variety</b> <%= @location.variety %> <br />
+<b>Acres</b> <%= @location.acres %> <br />
+<b>Latitude</b> <%= @location.latitude %> <br />
+<b>Longitude</b> <%= @location.longitude %> <br />
 
 <br />
+
+<% if @date.locations.size > 0 %>
+  <% @date.locations.each do |date| %>
+    <%= @date.date %> <br />
+    <% end %>
+
+  <% else %>
+    No locations added to this date<br />
+
+  <% end %> <br />
 
 <%= link_to 'Go back', locations_path %>

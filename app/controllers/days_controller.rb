@@ -3,11 +3,13 @@ class DaysController < ApplicationController
    def index
      #will have template
      @dates = Day.all
+     @location = Location.all
    end
 
    def show
      #will have template
      @date = Day.find(params[:id])
+     @location = Location.find(params[:id])
    end
 
    def new #display a new record

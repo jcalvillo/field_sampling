@@ -15,7 +15,11 @@
 
 <% @dates.each do |date| %>
     <p>
-      Day: <%= link_to date.date, day_path(date) %> | <%= link_to 'Destroy', date, method: :delete %>
+      <%= date.date %> |
+      |<%= link_to 'Add/Remove Locations', day_path(date)  %>
+<!--      <%= link_to 'Destroy', date, method: :delete %> <br /> -->
+
+
     </p>
 
 <% end %>
