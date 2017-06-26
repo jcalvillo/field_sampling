@@ -95,9 +95,9 @@
 
   Checkboxes are marked for every location scheduled. <br />
   To add: &nbsp&nbsp&nbsp&nbsp &#10004 SUBMIT<br />
-  to remove:  &#x25A2 SUBMIT<br /><br />
+  To remove:  &#x25A2 SUBMIT<br /><br />
 
     <%= simple_form_for @date do |f| %>
-      <%= f.association :locations, as: :check_boxes, label_method: :cb_label, value_method: :id %><br />
+      <%= f.association :locations, as: :check_boxes, collection: @date.appointments(:location), label_method: :cb_label_l, value_method: :location_id %><br />
       <%= f.button :submit, 'Submit' %>
     <% end %><br />

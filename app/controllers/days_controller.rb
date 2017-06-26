@@ -13,6 +13,11 @@ class DaysController < ApplicationController
      @dates = Day.all
      @location = Location.all
      @appointment = Appointment.all
+#     if @appointment.save
+#       redirect_to day_path
+#     else
+#       render 'new'
+#     end
    end
 
    def new #display a new record
@@ -27,7 +32,7 @@ class DaysController < ApplicationController
      if @date.save
        redirect_to days_path
      else
-       render "new"
+       render 'new'
      end
    end
 
