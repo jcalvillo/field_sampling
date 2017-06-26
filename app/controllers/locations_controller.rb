@@ -11,6 +11,7 @@ class LocationsController < ApplicationController
       #will have template
       @location = Location.find(params[:id])
       @date = Day.all
+      @appointment = Appointment.all
     end
 
     def new #display a new record

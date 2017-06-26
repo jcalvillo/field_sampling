@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.11'
 # Use sqlite3 as the database for Active Record
-
 gem 'sqlite3',          group: :development
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -39,6 +37,13 @@ gem 'railroady'
 
 #for use with has_and_belongs_to_many (multiple checkboxes)
 gem 'simple_form'
+
+#for use with google maps
+#https://github.com/edwardsamuel/google-maps-services-ruby
+#http://www.rubydoc.info/gems/google_maps_service/GoogleMapsService/Apis/DistanceMatrix
+#https://developers.google.com/maps/documentation/distance-matrix/
+gem 'google-api-client'
+gem 'google_maps_service'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

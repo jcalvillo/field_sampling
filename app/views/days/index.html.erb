@@ -1,29 +1,30 @@
 <!-- navigation links -->
-<h1>AGQ Labs USA</h1><h2>Sampling Calendar</h2>
-<%= link_to "Locations", locations_path %> | <%= link_to "Dates/Calendar", days_path %>
-<hr>
+<h1 align="center">AGQ Labs USA</h1>
+<h2 align="center">Sampling Calendar</h2>
+<%= link_to "Locations", locations_path %> | <%= link_to "Calendar", days_path %>
 
-<!-- calendar of all appointments -->
-<h1><font color="blue">Calendar</font></h1>
+
+<!-- calendar of all appointments
+<h1><font color="blue">All Scheduled Samplings</font></h1>
 <table border="1" align="center">
   <tbody align="center">
     <tr>
-      <th>Number of Samples</th>
-      <th>Date</th>
-      <th>Client</th>
-      <th>City</th>
-      <th>Ranch/Field ID</th>
-      <th>Grower</th>
-      <th>Site/Block ID</th>
-      <th>Variety</th>
-      <th>Acres</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
+      <th>&nbsp&nbsp  Number of Samples  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Date  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Client  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  City  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Ranch/Field ID  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Grower  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Site/Block ID  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Variety  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Acres  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Latitude  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Longitude  &nbsp&nbsp</th>
     </tr>
 
     <% @appointment.each do |appointment| %>
     <tr>
-      <td><%= appointment.pulls %></td>
+      <td>&nbsp&nbsp<%= appointment.pulls %>&nbsp&nbsp</td>
       <td>&nbsp&nbsp<%= appointment.day.date %>&nbsp&nbsp</td>
       <td>&nbsp&nbsp<%= appointment.location.client %>&nbsp&nbsp</td>
       <td>&nbsp&nbsp<%= appointment.location.city %>&nbsp&nbsp</td>
@@ -40,8 +41,9 @@
 </table>
 <br />
 <hr>
+ -->
 
-<!-- actions -->
+<!-- actions
 <h2><font color="green">Add Dates</font></h2>
 
   <h3>&#x2219 <%= link_to 'Manually', new_day_path %></h3>
@@ -52,9 +54,10 @@
     <%= submit_tag "Upload" %>
   <% end %> <br />
 <hr>
+-->
 
 <!-- display all dates -->
-<h2><font color="green">Index of all Dates</font></h2>
+
   <table border="1" align="center">
     <tbody align="center">
       <tr>
@@ -70,11 +73,23 @@
       <% @dates.each do |date| %>
       <tr>
         <td>&nbsp&nbsp<%= date.date %>&nbsp&nbsp</td>
+
+        <% if date.appointments.sum(:pulls) > 0 %>
+            <td><%= date.appointments.sum(:pulls) %></td>
+            <td><%= date.appointments.sum(:pulls)*0.5 %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
+        <% if date.appointments.size > 0 %>
+            <td><%= date.appointments.size %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+
         <td></td>
         <td></td>
-        <td><%= date.appointments.size %></td>
-        <td></td>
-        <td></td>
+
         <td>&nbsp&nbsp<%= link_to 'Schedule', day_path(date)  %>&nbsp&nbsp</td>
       </tr>
     <% end %>

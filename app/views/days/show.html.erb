@@ -1,59 +1,103 @@
 <!--heading-->
-<h1>Day Schedule</h1>
+<h1>Schedule</h1>
 <%= link_to 'Go back', days_path %>
 <hr>
 
 <!--record specification-->
-<table border="1">
+<table border="1" align="center">
   <tr>
-    <th>Date</th>
+    <th><h1>Date</h1></th>
   </tr>
   <tr>
-    <td><%= @date.date %></td>
+    <td><h1><font color="red">&nbsp&nbsp<%= @date.date %>&nbsp&nbsp</font></h1></td>
   </tr>
 </table>
-<hr>
+<br />
 
-<!--make new associations?-->
-<h3><font color=blue>Add locations to this date</font></h3>
-  <%= simple_form_for @date do |f| %>
-    <%= f.association :locations, as: :check_boxes, label_method: :cb_label, value_method: :id %><br />
-    <%= f.button :submit, 'Assign to this date' %>
-  <% end %>
-<hr>
-
-<!--association display-->
-<h3><font color=blue>Locations already assigned</font></h3>
-
-<% if @date.locations.size > 0 %>
-  <table border="1">
+<!-- Summary of Schedule -->
+<table border="1" align="center">
+  <tbody align="center">
     <tr>
-      <th>Client</th>
-      <th>City</th>
-      <th>Ranch/Field ID</th>
-      <th>Grower</th>
-      <th>Site/Block ID</th>
-      <th>Variety</th>
-      <th>Acres</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Actions</th>
+      <th><h2>&nbsp&nbsp  Samples Scheduled  &nbsp&nbsp</h2>(total)</th>
+      <th><h2>&nbsp&nbsp  Total Sampling Time  &nbsp&nbsp</h2>(hrs)</th>
+      <th><h2>&nbsp&nbsp  Locations Scheduled  &nbsp&nbsp</h2>(total)</th>
+      <th><h2>&nbsp&nbsp  Total Travel Time  &nbsp&nbsp</h2>(hrs)</th>
+      <th><h2>&nbsp&nbsp  Total Time (Sampling + Travel)  &nbsp&nbsp</h2>(hrs)</th>
     </tr>
 
-  <% @date.locations.each do |location| %>
     <tr>
-        <td><%= location.client %></td>
-        <td><%= location.city %></td>
-        <td><%= location.ranchfield %></td>
-        <td><%= location.grower %></td>
-        <td><%= location.siteblock %></td>
-        <td><%= location.variety %></td>
-        <td><%= location.acres %></td>
-        <td><%= location.latitude %></td>
-        <td><%= location.longitude %></td>
-      </tr>
-  <% end %>
+      <% if @date.appointments.sum(:pulls) > 0 %>
+          <td><%= @date.appointments.sum(:pulls) %></td>
+          <td><%= @date.appointments.sum(:pulls)*0.5 %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+      <% if @date.appointments.size > 0 %>
+          <td><%= @date.appointments.size %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+
+      <td></td>
+      <td></td>
+
+  </tbody>
+</table>
+<br />
+
+<!--association display-->
+<h1 align="center">Details</h1>
+
+<% if @date.locations.size > 0 %>
+
+    <table border="1" align="center">
+      <tbody align="center">
+        <tr>
+          <th>&nbsp&nbsp  Number of Samples  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Date  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Client  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  City  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Ranch/Field ID  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Grower  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Site/Block ID  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Variety  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Acres  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Latitude  &nbsp&nbsp</th>
+          <th>&nbsp&nbsp  Longitude  &nbsp&nbsp</th>
+        </tr>
+
+        <% @appointment.each do |appointment| %>
+        <tr>
+          <td>&nbsp&nbsp<%= appointment.pulls %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= @date.date %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.client %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.city %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.ranchfield %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.grower %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.siteblock %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.variety %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.acres %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.latitude %>&nbsp&nbsp</td>
+          <td>&nbsp&nbsp<%= appointment.location.longitude %>&nbsp&nbsp</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 
   <% else %>
-    ...Such an empty day<br />
-<% end %>
+  <font color="red"><p align="center">No scheduled samplings for this day yet...</p></font>
+  <% end %><br />
+  <hr>
+
+  <!--make new associations?-->
+  <h2><font color=red>All Scheduled Locations </font>(for this day)</h2>
+
+  Checkboxes are marked for every location scheduled. <br />
+  To add: &nbsp&nbsp&nbsp&nbsp &#10004 SUBMIT<br />
+  to remove:  &#x25A2 SUBMIT<br /><br />
+
+    <%= simple_form_for @date do |f| %>
+      <%= f.association :locations, as: :check_boxes, label_method: :cb_label, value_method: :id %><br />
+      <%= f.button :submit, 'Submit' %>
+    <% end %><br />

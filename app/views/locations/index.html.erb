@@ -1,50 +1,57 @@
 <!-- navigation links -->
-<h1>AGQ Labs USA</h1><h2>Sampling Calendar</h2>
-<%= link_to "Locations", locations_path %> | <%= link_to "Dates/Calendar", days_path %>
-<hr>
+<h1 align="center">AGQ Labs USA</h1>
+<h2 align="center">Sampling Calendar</h2>
+<%= link_to "Locations", locations_path %> | <%= link_to "Calendar", days_path %>
+<br /><br /><br />
 
 <!-- actions -->
-<h2><font color="green">Add Locations</font></h2>
+<h2 align="center"><font color="green">Add Locations</font></h2>
 
-  <h3>&#x2219 <%= link_to 'Manually', new_location_path %></h3>
+  <h3 align="center"><%= link_to 'Manually', new_location_path %></h3>
 
-  <h3>&#x2219 Import CSV</h3>
-    <%= form_tag import_locations_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Upload" %>
+  <div class = "center form-actions">
+      <%= form_tag import_locations_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Upload" %>
+  </div>
   <% end %> <br />
-<hr>
+<br /><br /><br />
+
+
 
 <!-- display all locations-->
-<h2><font color="green">Index of all Locations</font></h2>
+<h2 align="center"><font color="green">Index of all Locations</font></h2>
 
-<table border="1">
-  <tr>
-    <th>Client</th>
-    <th>City</th>
-    <th>Ranch/Field ID</th>
-    <th>Grower</th>
-    <th>Site/Block ID</th>
-    <th>Variety</th>
-    <th>Acres</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Actions</th>
-  </tr>
+<table border="1" align="center">
+  <tbody align="center">
+    <tr>
+      <th>&nbsp&nbspClient&nbsp&nbsp</th>
+      <th>&nbsp&nbspCity&nbsp&nbsp</th>
+      <th>&nbsp&nbspRanch/Field ID&nbsp&nbsp</th>
+      <th>&nbsp&nbspGrower&nbsp&nbsp</th>
+      <th>&nbsp&nbspSite/Block ID&nbsp&nbsp</th>
+      <th>&nbsp&nbspVariety&nbsp&nbsp</th>
+      <th>&nbsp&nbspAcres&nbsp&nbsp</th>
+      <th>&nbsp&nbspLatitude&nbsp&nbsp</th>
+      <th>&nbsp&nbspLongitude&nbsp&nbsp</th>
+      <th>&nbsp&nbspActions&nbsp&nbsp</th>
+    </tr>
 
-<% @locations.each do |location| %>
-  <tr>
-      <td>&nbsp&nbsp<%= location.client %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= location.city %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= location.ranchfield %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= location.grower %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= location.siteblock %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= location.variety %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= location.acres %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= location.latitude %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= location.longitude %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp(<%= link_to 'Edit', edit_location_path(location) %> | <%= link_to 'Destroy', location, method: :delete %>) |
-      <%= link_to 'Schedule', location_path(location)  %>&nbsp&nbsp</td>
-   </tr>
-    <% end %>
-</table>
+  <% @locations.each do |location| %>
+    <tr>
+        <td>&nbsp&nbsp<%= location.client %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp<%= location.city %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp<%= location.ranchfield %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp<%= location.grower %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp<%= location.siteblock %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp<%= location.variety %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp<%= location.acres %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp<%= location.latitude %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp<%= location.longitude %>&nbsp&nbsp</td>
+        <td>&nbsp&nbsp(<%= link_to 'Edit', edit_location_path(location) %> | <%= link_to 'Destroy', location, method: :delete %>) |
+        <%= link_to 'Schedule', location_path(location)  %>&nbsp&nbsp</td>
+     </tr>
+      <% end %>
+
+  </tbody>
+  </table>

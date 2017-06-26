@@ -4,45 +4,38 @@
 <hr>
 
 <!--record specification-->
-<table border="1">
-  <tr>
-    <th>Client</th>
-    <th>City</th>
-    <th>Ranch/Field ID</th>
-    <th>Grower</th>
-    <th>Site/Block ID</th>
-    <th>Variety</th>
-    <th>Acres</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-  </tr>
-  <tr>
-    <td><%= @location.client %></td>
-    <td><%= @location.city %></td>
-    <td><%= @location.ranchfield %></td>
-    <td><%= @location.grower %></td>
-    <td><%= @location.siteblock %></td>
-    <td><%= @location.variety %></td>
-    <td><%= @location.acres %></td>
-    <td><%= @location.latitude %></td>
-    <td><%= @location.longitude %></td>
-  </tr>
+<table border="1" align="center">
+  <tbody align="center">
+    <tr>
+      <th><h2>&nbsp&nbsp  Client  &nbsp&nbsp</th></h2>
+      <th><h2>&nbsp&nbsp  City  &nbsp&nbsp</th></h2>
+      <th><h2>&nbsp&nbsp  Ranch/Field ID  &nbsp&nbsp</th></h2>
+      <th><h2>&nbsp&nbsp  Grower  &nbsp&nbsp</th></h2>
+      <th><h2>&nbsp&nbsp  Site/Block ID  &nbsp&nbsp</th></h2>
+      <th><h2>&nbsp&nbsp  Variety  &nbsp&nbsp</th></h2>
+      <th><h2>&nbsp&nbsp  Acres  &nbsp&nbsp</th></h2>
+      <th><h2>&nbsp&nbsp  Latitude  &nbsp&nbsp</th></h2>
+      <th><h2>&nbsp&nbsp  Longitude  &nbsp&nbsp</th></h2>
+    </tr>
+    <tr>
+      <td>&nbsp&nbsp<%= @location.client %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= @location.city %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= @location.ranchfield %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= @location.grower %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= @location.siteblock %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= @location.variety %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= @location.acres %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= @location.latitude %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= @location.longitude %>&nbsp&nbsp</td>
+    </tr>
+  </tbody>
 </table>
-<hr>
-
-<!--make new associations?-->
-<h3><font color=blue>Schedule days for this location</font></h3>
-<%= simple_form_for @location do |f| %>
-  <%= f.association :days, as: :check_boxes, label_method: :date, value_method: :id %><br />
-  <%= f.button :submit, 'Assign to this location' %>
-<% end %>
-<hr>
 
 <!--associations display-->
-<h3><font color=blue>Days scheduled for sampling</font></h3>
+<h2 align="center"><font color=blue>Days scheduled for sampling </font>(at this location)</h2>
 
 <% if @location.appointments.size > 0 %>
-  <table border="1">
+  <table border="1" align="center">
     <tr>
       <th>Date</th>
     </tr>
@@ -50,9 +43,24 @@
   <% @location.days.each do |day| %>
     <tr>
       <td><%= day.date %></td>
+    </tr>
     <% end %>
+  </table>
 
   <% else %>
     ...Such a lonely location with no dates<br />
 
   <% end %>
+<hr>
+
+<!--change associations?-->
+<h2><font color=blue>All Scheduled Days </font>(at this location)</h2>
+
+Checkboxes are marked for every day this is scheduled. <br />
+To add: &nbsp&nbsp&nbsp&nbsp &#10004 SUBMIT<br />
+to remove:  &#x25A2 SUBMIT<br /><br />
+
+<%= simple_form_for @location do |f| %>
+  <%= f.association :days, as: :check_boxes, label_method: :date, value_method: :id %><br />
+  <%= f.button :submit, 'Submit' %>
+<% end %>
