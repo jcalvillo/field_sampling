@@ -41,15 +41,15 @@
 <!--associations display-->
 <h3><font color=blue>Days scheduled for sampling</font></h3>
 
-<% if @location.days.size > 0 %>
+<% if @location.appointments.size > 0 %>
   <table border="1">
     <tr>
       <th>Date</th>
     </tr>
 
-  <% @date.locations.each do |date| %>
+  <% @location.days.each do |day| %>
     <tr>
-      <td><%= @date.date %></td>
+      <td><%= day.date %></td>
     <% end %>
 
   <% else %>

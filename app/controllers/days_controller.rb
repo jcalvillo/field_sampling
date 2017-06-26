@@ -4,6 +4,7 @@ class DaysController < ApplicationController
      #will have template
      @dates = Day.all
      @location = Location.all
+     @appointment = Appointment.all
    end
 
    def show

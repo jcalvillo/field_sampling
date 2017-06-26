@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619191842) do
+ActiveRecord::Schema.define(version: 20170626001135) do
+
+  create_table "appointments", force: true do |t|
+    t.integer  "pulls"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "day_id"
+    t.integer  "location_id"
+  end
+
+  add_index "appointments", ["day_id"], name: "index_appointments_on_day_id"
+  add_index "appointments", ["location_id"], name: "index_appointments_on_location_id"
 
   create_table "days", force: true do |t|
     t.date     "date"
@@ -20,11 +31,6 @@ ActiveRecord::Schema.define(version: 20170619191842) do
   end
 
   add_index "days", ["date"], name: "index_days_on_date", unique: true
-
-  create_table "days_locations", force: true do |t|
-    t.integer "day_id"
-    t.integer "location_id"
-  end
 
   create_table "locations", force: true do |t|
     t.text     "client"

@@ -1,9 +1,10 @@
+<!-- navigation links -->
 <h1>AGQ Labs USA</h1><h2>Sampling Calendar</h2>
-<%= link_to "Locations", locations_path %> | <%= link_to "Dates", days_path %>
+<%= link_to "Locations", locations_path %> | <%= link_to "Dates/Calendar", days_path %>
 <hr>
 
-
-<h2><font color="green">Add Locations:</font></h2>
+<!-- actions -->
+<h2><font color="green">Add Locations</font></h2>
 
   <h3>&#x2219 <%= link_to 'Manually', new_location_path %></h3>
 
@@ -14,7 +15,8 @@
   <% end %> <br />
 <hr>
 
-<h2><font color="green">Index of all Locations:</font></h2>
+<!-- display all locations-->
+<h2><font color="green">Index of all Locations</font></h2>
 
 <table border="1">
   <tr>
@@ -32,17 +34,17 @@
 
 <% @locations.each do |location| %>
   <tr>
-      <td><%= location.client %></td>
-      <td><%= location.city %></td>
-      <td><%= location.ranchfield %></td>
-      <td><%= location.grower %></td>
-      <td><%= location.siteblock %></td>
-      <td><%= location.variety %></td>
-      <td><%= location.acres %></td>
-      <td><%= location.latitude %></td>
-      <td><%= location.longitude %></td>
-      <td>(<%= link_to 'Edit', edit_location_path(location) %> | <%= link_to 'Destroy', location, method: :delete %>) |
-      <%= link_to 'Schedule New Sample', location_path(location)  %></td>
+      <td>&nbsp&nbsp<%= location.client %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= location.city %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= location.ranchfield %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= location.grower %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= location.siteblock %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= location.variety %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= location.acres %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= location.latitude %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp<%= location.longitude %>&nbsp&nbsp</td>
+      <td>&nbsp&nbsp(<%= link_to 'Edit', edit_location_path(location) %> | <%= link_to 'Destroy', location, method: :delete %>) |
+      <%= link_to 'Schedule', location_path(location)  %>&nbsp&nbsp</td>
    </tr>
     <% end %>
 </table>

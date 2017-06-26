@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
-  has_and_belongs_to_many :days
+  has_many :appointments
+  has_many :days, through: :appointments
 
   def self.import(file)
     CSV.foreach(file.path, headers:true) do |row|
