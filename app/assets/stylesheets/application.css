@@ -13,3 +13,45 @@
  *= require_tree .
  *= require_self
  */
+ table, thead, tbody, tr, th, td, tfoot {
+   border-collapse: collapse;
+   border-spacing: 0px;
+ }
+ th, td {
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   text-align: center;
+ }
+ th {
+   border-top-width: medium;
+   border-bottom-width: medium;
+   border-left-width: thin;
+   border-right-width: thin;
+ }
+td {
+  border-width: thin;
+}
+.tableHeadDescription, .tableHeadDescription th {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-spacing: 0;
+  border-bottom-width: 0;
+}
+.tableHeadLabel, .tableHeadLabel th {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+  border-top-width: 0;
+  border-spacing: 0;
+}
+.dayTitle {
+  margin: auto;
+  width: 250px;
+  text-align: center;
+}
+.red {
+  color: red;
+}

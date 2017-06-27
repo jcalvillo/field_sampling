@@ -2,17 +2,16 @@ class DaysController < ApplicationController
 
    def index
      #will have template
-     @dates = Day.all
-     @location = Location.all
-     @appointment = Appointment.all
+     @dates = Day.
+     select(" days.id, days.date, coalesce(sum(appointments.pulls),0) appts_pulls_sum, count(day_id) appts_count").
+     joins("LEFT JOIN appointments on appointments.day_id = days.id").
+     group("days.id, days.date")
    end
 
    def show
      #will have template
      @date = Day.find(params[:id])
-     @dates = Day.all
-     @location = Location.all
-     @appointment = Appointment.all
+     @locations = Location.all
 #     if @appointment.save
 #       redirect_to day_path
 #     else
@@ -42,6 +41,7 @@ class DaysController < ApplicationController
    end
 
    def update #save changes
+     puts params
      @date = Day.find(params[:id])
      if @date.update_attributes(allowed_params)
        redirect_to days_path
@@ -65,7 +65,7 @@ class DaysController < ApplicationController
 
   private
    def allowed_params
-     params.require(:day).permit(:date)
+     params.require(:day).permit(:date, location_ids: [])
    end
 
 

@@ -3,96 +3,38 @@
 <h2 align="center">Sampling Calendar</h2>
 <%= link_to "Locations", locations_path %> | <%= link_to "Calendar", days_path %>
 
-
-<!-- calendar of all appointments
-<h1><font color="blue">All Scheduled Samplings</font></h1>
-<table border="1" align="center">
-  <tbody align="center">
-    <tr>
-      <th>&nbsp&nbsp  Number of Samples  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Date  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Client  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  City  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Ranch/Field ID  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Grower  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Site/Block ID  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Variety  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Acres  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Latitude  &nbsp&nbsp</th>
-      <th>&nbsp&nbsp  Longitude  &nbsp&nbsp</th>
-    </tr>
-
-    <% @appointment.each do |appointment| %>
-    <tr>
-      <td>&nbsp&nbsp<%= appointment.pulls %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.day.date %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.client %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.city %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.ranchfield %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.grower %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.siteblock %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.variety %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.acres %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.latitude %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= appointment.location.longitude %>&nbsp&nbsp</td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<br />
-<hr>
- -->
-
-<!-- actions
-<h2><font color="green">Add Dates</font></h2>
-
-  <h3>&#x2219 <%= link_to 'Manually', new_day_path %></h3>
-
-  <h3>&#x2219 Import CSV</h3>
-    <%= form_tag import_days_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Upload" %>
-  <% end %> <br />
-<hr>
--->
-
-<!-- display all dates -->
-
   <table border="1" align="center">
-    <tbody align="center">
-      <tr>
-        <th>Date</th>
-        <th>Samples Scheduled<br />(total)</th>
-        <th>Total Sampling Time<br />(hrs)</th>
-        <th>Locations Scheduled<br />(total)</th>
-        <th>Total Travel Time<br />(hrs)</th>
-        <th>Total Time (Sampling + Travel)<br />(hrs)</th>
-        <th>Actions</th>
-      </tr>
-
-      <% @dates.each do |date| %>
-      <tr>
-        <td>&nbsp&nbsp<%= date.date %>&nbsp&nbsp</td>
-
-        <% if date.appointments.sum(:pulls) > 0 %>
-            <td><%= date.appointments.sum(:pulls) %></td>
-            <td><%= date.appointments.sum(:pulls)*0.5 %></td>
-          <% else %>
+      <thead>
+        <tr class="tableHeadDescription">
+          <th>Date</th>
+          <th>Samples Scheduled</th>
+          <th>Total Sampling Time</th>
+          <th>Locations Scheduled</th>
+          <th>Total Travel Time</th>
+          <th>Total Time</th>
+          <th>Actions</th>
+        </tr>
+        <tr class='tableHeadLabel'>
+          <th></th>
+          <th>(total)</th>
+          <th>(hrs)</th>
+          <th>(total)</th>
+          <th>(hrs)</th>
+          <th>(hrs)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @dates.each do |date| %>
+          <tr>
+            <td><%= date.date %></td>
+            <td><%= date.appts_pulls_sum %></td>
+            <td><%= date.appts_pulls_sum*0.5 %></td>
+            <td><%= date.appts_count %></td>
             <td></td>
             <td></td>
-          <% end %>
-        <% if date.appointments.size > 0 %>
-            <td><%= date.appointments.size %></td>
-          <% else %>
-            <td></td>
-          <% end %>
-
-        <td></td>
-        <td></td>
-
-        <td>&nbsp&nbsp<%= link_to 'Schedule', day_path(date)  %>&nbsp&nbsp</td>
-      </tr>
-    <% end %>
-
-    </tbody>
+            <td><%= link_to 'Schedule', day_path(date)  %></td>
+          </tr>
+        <% end %>
+      </tbody>
   </table>
