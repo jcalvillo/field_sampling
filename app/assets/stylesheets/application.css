@@ -55,3 +55,11 @@ td {
 .red {
   color: red;
 }
+.inlineBlock {
+  display: inline-block;
+  margin: 10px 0px;
+}
+.inlineBlock p {
+  margin: 0px;
+  padding: 0px;
+}

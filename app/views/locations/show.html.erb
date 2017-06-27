@@ -5,28 +5,30 @@
 
 <!--record specification-->
 <table border="1" align="center">
-  <tbody align="center">
+   <thead>
     <tr>
-      <th><h2>&nbsp&nbsp  Client  &nbsp&nbsp</th></h2>
-      <th><h2>&nbsp&nbsp  City  &nbsp&nbsp</th></h2>
-      <th><h2>&nbsp&nbsp  Ranch/Field ID  &nbsp&nbsp</th></h2>
-      <th><h2>&nbsp&nbsp  Grower  &nbsp&nbsp</th></h2>
-      <th><h2>&nbsp&nbsp  Site/Block ID  &nbsp&nbsp</th></h2>
-      <th><h2>&nbsp&nbsp  Variety  &nbsp&nbsp</th></h2>
-      <th><h2>&nbsp&nbsp  Acres  &nbsp&nbsp</th></h2>
-      <th><h2>&nbsp&nbsp  Latitude  &nbsp&nbsp</th></h2>
-      <th><h2>&nbsp&nbsp  Longitude  &nbsp&nbsp</th></h2>
+      <th>  Client  </th>
+      <th>  City  </th>
+      <th>  Ranch/Field ID  </th>
+      <th>  Grower  </th>
+      <th>  Site/Block ID  </th>
+      <th>  Variety  </th>
+      <th>  Acres  </th>
+      <th>  Latitude  </th>
+      <th>  Longitude  </th>
     </tr>
+    <thead>
+    <tbody align="center">
     <tr>
-      <td>&nbsp&nbsp<%= @location.client %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= @location.city %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= @location.ranchfield %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= @location.grower %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= @location.siteblock %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= @location.variety %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= @location.acres %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= @location.latitude %>&nbsp&nbsp</td>
-      <td>&nbsp&nbsp<%= @location.longitude %>&nbsp&nbsp</td>
+      <td><%= @location.client %></td>
+      <td><%= @location.city %></td>
+      <td><%= @location.ranchfield %></td>
+      <td><%= @location.grower %></td>
+      <td><%= @location.siteblock %></td>
+      <td><%= @location.variety %></td>
+      <td><%= @location.acres %></td>
+      <td><%= @location.latitude %></td>
+      <td><%= @location.longitude %></td>
     </tr>
   </tbody>
 </table>
@@ -57,10 +59,18 @@
 <h2><font color=blue>All Scheduled Days </font>(at this location)</h2>
 
 Checkboxes are marked for every day this is scheduled. <br />
-To add: &nbsp&nbsp&nbsp&nbsp &#10004 SUBMIT<br />
-to remove:  &#x25A2 SUBMIT<br /><br />
+<div class='instructions'>
+  <div class='inlineBlock'>
+    <p>To add:</p>
+    <p>To remove:</p>
+  </div>
+  <div class='inlineBlock'>
+    </p>&#10004 SUBMIT</p>
+    <p>&#x25A2 SUBMIT</p>
+  </div>
+</div>
 
 <%= simple_form_for @location do |f| %>
-  <%= f.association :days, as: :check_boxes, collection: @location.appointments(:date), label_method: :cb_label_d, value_method: :day_id %><br />
+  <%= f.association :days, as: :check_boxes, collection: @location.days, label_method: :date, value_method: :id %><br/>
   <%= f.button :submit, 'Submit' %>
 <% end %>

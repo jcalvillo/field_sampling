@@ -10,13 +10,8 @@ class DaysController < ApplicationController
 
    def show
      #will have template
-     @date = Day.find(params[:id])
+     @date = Day.includes(:appointments).includes(:locations).find(params[:id])
      @locations = Location.all
-#     if @appointment.save
-#       redirect_to day_path
-#     else
-#       render 'new'
-#     end
    end
 
    def new #display a new record

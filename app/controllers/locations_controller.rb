@@ -10,14 +10,6 @@ class LocationsController < ApplicationController
     def show
       #will have template
       @location = Location.find(params[:id])
-      @date = Day.all
-      @appointment = Appointment.all
-#      if @appointment.save
-#        redirect_to location_path
-#      else
-#        render "new"
-#      end
-
     end
 
     def new #display a new record
@@ -65,7 +57,7 @@ class LocationsController < ApplicationController
 
   private
    def allowed_params
-     params.require(:location).permit(:client, :city, :ranchfield, :grower, :siteblock, :variety, :acres, :latitude, :longitude)
+     params.require(:location).permit(:client, :city, :ranchfield, :grower, :siteblock, :variety, :acres, :latitude, :longitude, day_ids: [])
    end
 end
 

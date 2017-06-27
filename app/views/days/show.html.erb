@@ -62,7 +62,7 @@
         </tr>
       </thead>
       <tbody align="center">
-        <% @appointment.each do |appointment| %>
+        <% @date.appointments.each do |appointment| %>
         <tr>
           <td><%= appointment.pulls %></td>
           <td><%= @date.date %></td>
@@ -89,9 +89,16 @@
 <div class='updateAppointments'>
   <h2><span class='red'>All Scheduled Locations </span>(for this day)</h2>
   Checkboxes are marked for every location scheduled. <br />
-  To add: &#10004 SUBMIT<br />
-  To remove:  &#x25A2 SUBMIT<br /><br />
-
+  <div class='instructions'>
+    <div class='inlineBlock'>
+      <p>To add:</p>
+      <p>To remove:</p>
+    </div>
+    <div class='inlineBlock'>
+      </p>&#10004 SUBMIT</p>
+      <p>&#x25A2 SUBMIT</p>
+    </div>
+  </div>
     <%= simple_form_for @date do |f| %>
         <%= f.association :locations, as: :check_boxes, collection: @locations, label_method: :cb_label, value_method: :id %><br />
         <%= f.button :submit, 'Update' %>
