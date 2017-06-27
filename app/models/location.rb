@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
     end
   end
 
-  def cb_label
+  def cb_label # what's a cb_label?
     "#{client}/#{city}/#{ranchfield}/#{grower}/#{siteblock}/#{variety}/#{acres}, (#{latitude}, #{longitude})"
   end
 
