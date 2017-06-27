@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 20170626001135) do
 
   add_index "days", ["date"], name: "index_days_on_date", unique: true
 
+  create_table "days_locations", force: true do |t|
+    t.integer "day_id"
+    t.integer "location_id"
+  end
+
   create_table "locations", force: true do |t|
     t.text     "client"
     t.text     "city"
