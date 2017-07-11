@@ -2,7 +2,6 @@
 <h1>Location Details</h1>
 <%= link_to 'Go back', locations_path %>
 
-
 <!--record specification-->
 <table border="1" align="center">
    <thead>
@@ -36,22 +35,22 @@
 <!--associations display-->
 <h2 align="center"><font color=blue>Days scheduled for sampling </font>(at this location)</h2>
 
-<% if @location.appointments.size > 0 %>
-  <table border="1" align="center">
-    <tr>
-      <th>Date</th>
-    </tr>
+  <% if @location.appointments.size > 0 %>
 
-  <% @location.days.each do |day| %>
-    <tr>
-      <td><%= day.date %></td>
-    </tr>
+    <table border="1" align="center">
+      <tr>
+        <th>Date</th>
+      </tr>
+
+    <% @location.days.each do |day| %>
+      <tr>
+        <td><%= day.date %></td>
+      </tr>
     <% end %>
-  </table>
+    </table>
 
-  <% else %>
-    ...Such a lonely location with no dates<br />
-
+    <% else %>
+      ...Such a lonely location with no dates<br />
   <% end %>
 <hr>
 

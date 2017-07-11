@@ -2,14 +2,13 @@
 <h1>Schedule</h1>
 <%= link_to 'Go back', days_path %>
 
-
 <!--record specification-->
 <div class="dayTitle">
   <h1>Date</h1>
   <h1 class='red'><%= @date.date %></h1>
 </div>
 
-<!-- Summary of Schedule -->
+<!-- summary of Schedule -->
 <table border="1" align="center">
   <thead>
     <tr class="tableHeadDescription">
@@ -37,7 +36,6 @@
     </tr>
   </tbody>
 </table>
-
 <br />
 
 <!--association display-->
@@ -64,7 +62,7 @@
       <tbody align="center">
         <% @date.appointments.each do |appointment| %>
         <tr>
-          <td><%= appointment.pulls %></td>
+          <td><%= appointment.pulls %></td> <!-- should be editable to change number of pulls -->
           <td><%= @date.date %></td>
           <td><%= appointment.location.client %></td>
           <td><%= appointment.location.city %></td>
@@ -85,7 +83,7 @@
   <% end %><br />
   <hr>
 
-  <!--make new associations?-->
+<!--make new associations?-->
 <div class='updateAppointments'>
   <h2><span class='red'>All Scheduled Locations </span>(for this day)</h2>
   Checkboxes are marked for every location scheduled. <br />
@@ -103,5 +101,4 @@
         <%= f.association :locations, as: :check_boxes, collection: @locations, label_method: :cb_label, value_method: :id %><br />
         <%= f.button :submit, 'Update' %>
     <% end %><br />
-
   </div>

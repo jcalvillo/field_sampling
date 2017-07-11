@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+
   has_many :appointments
   has_many :days, through: :appointments
 
@@ -8,7 +9,7 @@ class Location < ActiveRecord::Base
     end
   end
 
-  def cb_label # what's a cb_label?
+  def cb_label #called to display all fields for the checkbox label (days#show)
     "#{client}/#{city}/#{ranchfield}/#{grower}/#{siteblock}/#{variety}/#{acres}, (#{latitude}, #{longitude})"
   end
 

@@ -3,6 +3,7 @@
 <h2 align="center">Sampling Calendar</h2>
 <%= link_to "Locations", locations_path %> | <%= link_to "Calendar", days_path %>
 
+<!-- calendar -->
   <table border="1" align="center">
       <thead>
         <tr class="tableHeadDescription">
@@ -28,11 +29,11 @@
         <% @dates.each do |date| %>
           <tr>
             <td><%= date.date %></td>
-            <td><%= date.appts_pulls_sum %></td>
-            <td><%= date.appts_pulls_sum*0.5 %></td>
-            <td><%= date.appts_count %></td>
-            <td></td>
-            <td></td>
+            <td><%= date.appts_pulls_sum %></td> <!-- can we make this blank when date.appts_pulls_sum=0 ? -->
+            <td><%= date.appts_pulls_sum*0.5 %></td> <!-- can we make this blank when date.appts_pulls_sum=0 ? -->
+            <td><%= date.appts_count %></td> <!-- can we make this blank when date.appts_pulls_sum=0 ? -->
+            <td></td> <!-- API time return -->
+            <td></td> <!-- (date.appts_pulls_sum*0.5) + (API time return) -->
             <td><%= link_to 'Schedule', day_path(date)  %></td>
           </tr>
         <% end %>

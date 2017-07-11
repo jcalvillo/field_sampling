@@ -17,24 +17,22 @@
   <% end %> <br />
 <br /><br /><br />
 
-
-
 <!-- display all locations-->
 <h2 align="center"><font color="green">Index of all Locations</font></h2>
 
 <table border="1" align="center">
   <tbody align="center">
     <tr>
-      <th>&nbsp&nbspClient&nbsp&nbsp</th>
-      <th>&nbsp&nbspCity&nbsp&nbsp</th>
-      <th>&nbsp&nbspRanch/Field ID&nbsp&nbsp</th>
-      <th>&nbsp&nbspGrower&nbsp&nbsp</th>
-      <th>&nbsp&nbspSite/Block ID&nbsp&nbsp</th>
-      <th>&nbsp&nbspVariety&nbsp&nbsp</th>
-      <th>&nbsp&nbspAcres&nbsp&nbsp</th>
-      <th>&nbsp&nbspLatitude&nbsp&nbsp</th>
-      <th>&nbsp&nbspLongitude&nbsp&nbsp</th>
-      <th>&nbsp&nbspActions&nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Client  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  City  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Ranch/Field ID  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Grower  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Site/Block ID  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Variety  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Acres  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Latitude  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Longitude  &nbsp&nbsp</th>
+      <th>&nbsp&nbsp  Actions  &nbsp&nbsp</th>
     </tr>
 
   <% @locations.each do |location| %>
@@ -52,6 +50,5 @@
         <%= link_to 'Schedule', location_path(location)  %>&nbsp&nbsp</td>
      </tr>
       <% end %>
-
-  </tbody>
+    </tbody>
   </table>

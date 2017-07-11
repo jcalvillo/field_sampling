@@ -1,39 +1,34 @@
-<h1>Create a Sampling Location</h1> <br />
-
-<br />
+<h1>Create a Sampling Location</h1><br /><br />
 
 <%= form_for @location do |f| %>
 
-<b>Client<br /></b>
-<%= f.text_field :client %> <br />
+  <b>Client<br /></b>
+  <%= f.text_field :client %><br />
 
-<b>City<br /></b>
-<%= f.text_field :city %> <br />
+  <b>City<b><br />
+  <%= f.text_field :city %><br />
 
-<b>Ranch/Field ID<br /></b>
-<%= f.text_field :ranchfield %> <br />
+  <b>Ranch/Field ID<b><br />
+  <%= f.text_field :ranchfield %><br />
 
-<b>Grower <br /></b>
-<%= f.text_field :grower %> <br />
+  <b>Grower<b><br />
+  <%= f.text_field :grower %><br />
 
-<b>Site/Block ID<br /></b>
-<%= f.text_field :siteblock %> <br />
+  <b>Site/Block ID<b><br />
+  <%= f.text_field :siteblock %><br />
 
-<b>Variety<br /></b>
-<%= f.text_field :variety %> <br />
+  <b>Variety<b><br />
+  <%= f.text_field :variety %><br />
 
-<b>Acres<br /></b>
-<%= f.text_field :acres %> <br />
+  <b>Acres<b><br />
+  <%= f.text_field :acres %><br />
 
-<b>Latitude<br /></b>
-<%= f.text_field :latitude %> <br />
+  <b>Latitude<b><br />
+  <%= f.text_field :latitude %><br />
 
-<b>Longitude<br /></b>
-<%= f.text_field :longitude %> <br />
-
-<br />
+  <b>Longitude<b><br />
+  <%= f.text_field :longitude %><br /><br />
 
 <%= f.submit 'Submit'%> <br />
-
 
 <% end %>
