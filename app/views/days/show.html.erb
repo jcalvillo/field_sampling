@@ -40,6 +40,7 @@
 
 <!--association display-->
 <h1 align="center">Details</h1>
+    <%= simple_form_for @date do |f| %>
 
 <% if @date.locations.size > 0 %>
 
@@ -60,21 +61,21 @@
         </tr>
       </thead>
       <tbody align="center">
-        <% @date.appointments.each do |appointment| %>
-        <tr>
-          <td><%= appointment.pulls %></td> <!-- should be editable to change number of pulls -->
-          <td><%= @date.date %></td>
-          <td><%= appointment.location.client %></td>
-          <td><%= appointment.location.city %></td>
-          <td><%= appointment.location.ranchfield %></td>
-          <td><%= appointment.location.grower %></td>
-          <td><%= appointment.location.siteblock %></td>
-          <td><%= appointment.location.variety %></td>
-          <td><%= appointment.location.acres %></td>
-          <td><%= appointment.location.latitude %></td>
-          <td><%= appointment.location.longitude %></td>
-        </tr>
-        <% end %>
+          <% @date.appointments.each do |appointment| %>
+          <tr>
+            <td><%= text_field_tag "appointments[#{appointment.id}][pulls]", appointment.pulls %></td> <!-- should be editable to change number of pulls -->
+            <td><%= @date.date %></td>
+            <td><%= appointment.location.client %></td>
+            <td><%= appointment.location.city %></td>
+            <td><%= appointment.location.ranchfield %></td>
+            <td><%= appointment.location.grower %></td>
+            <td><%= appointment.location.siteblock %></td>
+            <td><%= appointment.location.variety %></td>
+            <td><%= appointment.location.acres %></td>
+            <td><%= appointment.location.latitude %></td>
+            <td><%= appointment.location.longitude %></td>
+          </tr>
+          <% end %>
       </tbody>
     </table>
 
@@ -97,8 +98,7 @@
       <p>&#x25A2 SUBMIT</p>
     </div>
   </div>
-    <%= simple_form_for @date do |f| %>
-        <%= f.association :locations, as: :check_boxes, collection: @locations, label_method: :cb_label, value_method: :id %><br />
-        <%= f.button :submit, 'Update' %>
+        <%= f.association :locations, as: :check_boxes, collection: @locations, label_method: :cb_label, value_method: :id, item_wrapper_class: 'checkbox_class' %><br />
+        <%= f.button :submit, 'Update', class: "update_btn" %>
     <% end %><br />
   </div>

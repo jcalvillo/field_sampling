@@ -30,6 +30,13 @@ class DaysController < ApplicationController
    end
 
    def update #save changes
+    unless params[:appointments].blank?
+      params[:appointments].each do |id, attributes|
+        if appointment = Appointment.find(id)
+          appointment.update_attributes(attributes)
+        end
+      end
+    end
      puts params #why? -jlc
      @date = Day.find(params[:id])
      @date.update_attributes(allowed_params)

@@ -63,3 +63,6 @@ td {
   margin: 0px;
   padding: 0px;
 }
+ span.checkbox_class{
+  display: block;
+}
