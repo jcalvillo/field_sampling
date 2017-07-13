@@ -31,8 +31,8 @@
       <td><%= @date.appointments.sum(:pulls) %></td>
       <td><%= @date.appointments.sum(:pulls)*0.5 %></td>
       <td><%= @date.appointments.size %></td>
-      <td></td>
-      <td></td>
+      <td><%= @time %></td>
+      <td><%= @time + @date.appointments.sum(:pulls)*0.5 %></td>
     </tr>
   </tbody>
 </table>

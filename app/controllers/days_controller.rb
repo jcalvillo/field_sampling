@@ -1,5 +1,5 @@
 class DaysController < ApplicationController
-
+  require 'net/http'
    def index
      @dates = Day.
      select(" days.id, days.date, coalesce(sum(appointments.pulls),0) appts_pulls_sum, count(day_id) appts_count").
@@ -8,8 +8,28 @@ class DaysController < ApplicationController
    end
 
    def show
-     @date = Day.includes(:appointments).includes(:locations).find(params[:id])
-     @locations = Location.all
+    @date = Day.includes(:appointments).includes(:locations).find(params[:id])
+    @locations = Location.all
+    @time = 0
+    origin = ERB::Util.url_encode("36.058241, -119.053045")
+    destinations = @date.locations.where(id: @date.appointments.pluck(:location_id)).map{|x| [x.latitude, x.longitude].join(',')}.join('|')
+    dest = ERB::Util.url_encode(destinations)
+    url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{origin}&destinations=#{dest}&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI"
+    uri = URI(url)
+    dist_json = ActiveSupport::JSON.decode(Net::HTTP.get(uri))
+    unless destinations.blank?
+      dist_json["rows"].each do |json|
+        json.each do |k,v|
+          v.each do |kv|
+            duration = kv["duration"]["value"] if kv["duration"] != nil
+            if duration != nil
+              duration = duration/(60*60)
+              @time = duration + @time
+            end
+          end
+        end
+      end
+    end
    end
 
    def new
