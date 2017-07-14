@@ -4,59 +4,61 @@
 <%= link_to "Locations", locations_path %> | <%= link_to "Calendar", days_path %>
 
 <!-- calendar -->
-  <table border="1" align="center">
-      <thead>
-        <tr class="tableHeadDescription">
-          <th>Date</th>
-          <th>Samples Scheduled</th>
-          <th>Total Sampling Time</th>
-          <th>Locations Scheduled</th>
-          <th>Total Travel Time</th>
-          <th>Total Time</th>
-          <th>Actions</th>
-        </tr>
-        <tr class='tableHeadLabel'>
-          <th></th>
-          <th>(total)</th>
-          <th>(hrs)</th>
-          <th>(total)</th>
-          <th>(hrs)</th>
-          <th>(hrs)</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% time = 0 %>
-        <% origin = ERB::Util.url_encode("36.058241, -119.053045") %>
+<table border="1" align="center">
 
-        <% @dates.each do |date| %>
-          <% destinations = date.locations.where(id: date.appointments.pluck(:location_id)).map{|x| [x.latitude, x.longitude].join(',')}.join('|') %>
-          <% dest = ERB::Util.url_encode(destinations) %>
-          <% url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{origin}&destinations=#{dest}&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI" %>
-          <% uri = URI(url) %>
-          <% dist_json = ActiveSupport::JSON.decode(Net::HTTP.get(uri)) %>
-          <% unless destinations.blank? %>
-            <% dist_json["rows"].each do |json| %>
-              <% json.each do |k,v| %>
-                <% v.each do |kv| %>
-                  <% duration = kv["duration"]["value"] if kv["duration"] != nil%>
-                  <% if duration != nil %>
-                    <% duration = duration/(60*60) %>
-                    <% time = duration + time %>
-                  <% end %>
-                <% end %>
+  <thead>
+    <tr class="tableHeadDescription">
+      <th>Date</th>
+      <th>Samples Scheduled</th>
+      <th>Total Sampling Time</th>
+      <th>Locations Scheduled</th>
+      <th>Total Travel Time</th>
+      <th>Total Time</th>
+      <th>Actions</th>
+    </tr>
+    <tr class='tableHeadLabel'>
+      <th></th>
+      <th>(total)</th>
+      <th>(hrs)</th>
+      <th>(total)</th>
+      <th>(hrs)</th>
+      <th>(hrs)</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% time = 0 %>
+    <% origin = ERB::Util.url_encode("36.058241, -119.053045") %>
+    <% @dates.each do |date| %>
+      <% destinations = date.locations.where(id: date.appointments.pluck(:location_id)).map{|x| [x.latitude, x.longitude].join(',')}.join('|') %>
+      <% dest = ERB::Util.url_encode(destinations) %>
+      <% url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=#{origin}&destinations=#{dest}&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI" %>
+      <% uri = URI(url) %>
+      <% dist_json = ActiveSupport::JSON.decode(Net::HTTP.get(uri)) %>
+      <% unless destinations.blank? %>
+        <% dist_json["rows"].each do |json| %>
+          <% json.each do |k,v| %>
+            <% v.each do |kv| %>
+              <% duration = kv["duration"]["value"] if kv["duration"] != nil%>
+              <% if duration != nil %>
+                <% duration = duration/(60*60) %>
+                <% time = duration + time %>
               <% end %>
             <% end %>
           <% end %>
-          <tr>
-            <td><%= date.date %></td>
-            <td><%= date.appts_pulls_sum if date.appts_pulls_sum!=0 %></td> <!-- can we make this blank when date.appts_pulls_sum=0 ? -->
-            <td><%= date.appts_pulls_sum*0.5 if date.appts_pulls_sum!=0 %></td> <!-- can we make this blank when date.appts_pulls_sum=0 ? -->
-            <td><%= date.appts_count if date.appts_count!=0 %></td> <!-- can we make this blank when date.appts_pulls_sum=0 ? -->
-            <td><%= time if time!=0 %></td> <!-- API time return -->
-            <td><%= date.appts_pulls_sum*0.5 + time if date.appts_count!=0 %></td> <!-- (date.appts_pulls_sum*0.5) + (API time return) -->
-            <td><%= link_to 'Schedule', day_path(date)  %></td>
-          </tr>
         <% end %>
-      </tbody>
-  </table>
+      <% end %>
+      <tr>
+        <td><%= date.date %></td>
+        <td><%= date.appts_pulls_sum if date.appts_pulls_sum !=0 %></td>
+        <td><%= date.appts_pulls_sum*0.5 if date.appts_pulls_sum !=0 %></td>
+        <td><%= date.appts_count if date.appts_count !=0 %></td>
+        <td><%= time if time != 0 %></td>
+        <td><%= date.appts_pulls_sum*0.5 + time if date.appts_pulls_sum !=0 %></td>
+        <td><%= link_to 'Schedule', day_path(date)  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
