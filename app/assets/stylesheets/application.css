@@ -66,3 +66,7 @@ td {
  span.checkbox_class{
   display: block;
 }
+img {
+    display: block;
+    margin: auto;
+}
