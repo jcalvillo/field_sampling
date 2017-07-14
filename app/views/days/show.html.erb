@@ -83,7 +83,19 @@
     <p class='red' align="center">No scheduled samplings for this day yet...</p>
   <% end %><br />
   <hr>
-
+  <% if @date.locations.size > 0 %>
+    <div>
+      <% my_url = "http://maps.google.com/maps/api/staticmap?size=580x260&maptype=roadmap" %>
+      <% @date.appointments.each do |appointment| %>
+        <% my_url += "&markers=color:blue%7Clabel:S%7C#{appointment.location.latitude},#{appointment.location.longitude}&sensor=false" %>
+        <% if @date.locations.size > 1 %>
+          <% img_url = "http://maps.google.com/maps/api/staticmap?zoom=7&size=580x260&maptype=roadmap&markers=color:blue%7Clabel:S%7C#{appointment.location.latitude},#{appointment.location.longitude}&sensor=false" %>
+          <img src="<%= img_url %>" alt="map" />
+        <% end %>
+      <% end %>
+      <img src="<%= my_url %>" alt="map" />
+    </div>
+  <% end %>
 <!--make new associations?-->
 <div class='updateAppointments'>
   <h2><span class='red'>All Scheduled Locations </span>(for this day)</h2>
