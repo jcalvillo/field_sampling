@@ -40,13 +40,15 @@
       <% unless destinations.blank? %>
         <% puts url.inspect %>
         <% dist_json = ActiveSupport::JSON.decode(Net::HTTP.get(uri)) %>
-        <% dist_json["routes"].each do |json| %>
-          <% json.each do |k,v| %>
-            <% v.each do |kv| %>
-              <% duration = kv["duration"]["value"] if kv["duration"] != nil%>
-              <% if duration != nil %>
-                <% duration = duration/(60*60) %>
-                <% time = duration + time %>
+        <% dist_json["routes"].each do |section| %>
+          <% section["legs"].each do |json| %>
+            <% json.each do |k,v| %>
+              <% v.each do |kv| %>
+                <% duration = kv["duration"]["value"] if kv["duration"] != nil%>
+                <% if duration != nil %>
+                  <% duration = duration/(60*60) %>
+                  <% time = duration + time %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
