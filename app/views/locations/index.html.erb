@@ -46,7 +46,7 @@
         <td>&nbsp&nbsp<%= location.acres %>&nbsp&nbsp</td>
         <td>&nbsp&nbsp<%= location.latitude %>&nbsp&nbsp</td>
         <td>&nbsp&nbsp<%= location.longitude %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp(<%= link_to 'Edit', edit_location_path(location) %> | <%= link_to 'Destroy', location, method: :delete %>) |
+        <td>&nbsp&nbsp(<%= link_to 'Edit', edit_location_path(location) %> | <%= link_to 'Destroy', location, method: :delete %>) 
         <%= link_to 'Schedule', location_path(location)  %>&nbsp&nbsp</td>
      </tr>
       <% end %>
