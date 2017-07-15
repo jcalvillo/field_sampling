@@ -35,7 +35,7 @@
       <th>&nbsp&nbsp  Actions  &nbsp&nbsp</th>
     </tr>
 
-  <% @locations.each do |location| %>
+  <% @locations.order(client: :asc).each do |location| %>
     <tr>
         <td>&nbsp&nbsp<%= location.client %>&nbsp&nbsp</td>
         <td>&nbsp&nbsp<%= location.city %>&nbsp&nbsp</td>

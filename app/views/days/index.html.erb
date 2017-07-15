@@ -27,7 +27,7 @@
   </thead>
 
   <% origin = ERB::Util.url_encode("36.058241, -119.053045") %>
-  <% @dates.each do |date| %>
+  <% @dates.order(created_at: :asc).each do |date| %>
     <% time = 0.00 %>
     <% duration = 0.00 %>
     <% destinations = date.locations.where(id: date.appointments.pluck(:location_id)).map{|x| [x.latitude, x.longitude].join(',')}.join('|') %>
