@@ -92,7 +92,7 @@
 
       <!-- Area Map -->
       <h3 align="center">Area Map</h3>
-      <% my_url = "http://maps.google.com/maps/api/staticmap?center=36.058241,+-119.053045&zoom=8&scale=false&size=640x640&maptype=terrain&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0x02e3fd%7Clabel:1%7C36.058241,+-119.053045" %>
+      <% my_url = "http://maps.google.com/maps/api/staticmap?center=36.058241,+-119.053045autoscale=false&scale=false&size=640x640&maptype=terrain&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff8040%7Clabel:1%7C36.058241,+-119.053045" %>
       <% @date.appointments.each do |appointment| %>
         <% my_url += "&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{appointment.location.latitude},#{appointment.location.longitude}" %>
       <% end %>
@@ -102,7 +102,7 @@
       <h3 align="center">Location Details</h3>
       <% @date.appointments.each do |appointment| %>
         <% my_url = "http://maps.google.com/maps/api/staticmap?center=#{appointment.location.latitude},#{appointment.location.longitude}&zoom=16&scale=false&size=640x640&maptype=satellite&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{appointment.location.latitude},#{appointment.location.longitude}" %>
-      <p align="center"><%= appointment.location.latitude %>, <%= appointment.location.longitude %></p>
+      <p align="center"><u><%= appointment.location.client %></u>: <%= appointment.location.latitude %>, <%= appointment.location.longitude %></p>
       <img src="<%= my_url %>" alt="map" /><br />
       <% end %>
 
