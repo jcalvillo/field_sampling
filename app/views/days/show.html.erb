@@ -101,7 +101,7 @@
       <!-- Location Maps -->
       <h3 align="center">Location Details</h3>
       <% @date.appointments.each do |appointment| %>
-        <% my_url = "http://maps.google.com/maps/api/staticmap?center=#{appointment.location.latitude},#{appointment.location.longitude}&zoom=12&scale=false&size=640x640&maptype=satellite&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{appointment.location.latitude},#{appointment.location.longitude}" %>
+        <% my_url = "http://maps.google.com/maps/api/staticmap?center=#{appointment.location.latitude},#{appointment.location.longitude}&zoom=18&scale=false&size=640x640&maptype=satellite&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{appointment.location.latitude},#{appointment.location.longitude}" %>
       <p align="center"><%= appointment.location.latitude %>, <%= appointment.location.longitude %></p>
       <img src="<%= my_url %>" alt="map" /><br />
       <% end %>
