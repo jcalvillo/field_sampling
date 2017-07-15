@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'csv'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'dates.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = Day.new
+  t.date = row['date']
+  t.save
+  puts "#{t.date} saved"
+end
+puts "There are now #{Day.count} rows in the transactions table"
