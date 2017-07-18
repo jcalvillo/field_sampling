@@ -27,30 +27,26 @@
   </thead>
 
   <% origin = ERB::Util.url_encode("36.058241, -119.053045") %>
-  <% @dates.order(created_at: :asc).each do |date| %>
+  <% @dates.each do |date| %>
     <% time = 0.00 %>
     <% duration = 0.00 %>
     <% destinations = date.locations.where(id: date.appointments.pluck(:location_id)).map{|x| [x.latitude, x.longitude].join(',')}.join('|') %>
     <% dest = ERB::Util.url_encode(destinations) %>
-    <% url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destinations=#{origin}&waypoints=optimize:true|#{dest}&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI" %>
+    <% url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{origin}&waypoints=optimize:true|#{dest}&key=AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI" %>
     <% uri = URI(url) %>
+    <% puts url.inspect %>
     <% unless destinations.blank? %>
-      <% puts url.inspect %>
       <% dist_json = ActiveSupport::JSON.decode(Net::HTTP.get(uri)) %>
       <% dist_json["routes"].each do |section| %>
         <% section["legs"].each do |json| %>
-          <% json.each do |k,v| %>
-            <% v.each do |kv| %>
-              <% duration = kv["duration"]["value"] if kv["duration"] != nil%>
-              <% if duration != nil %>
-                <% duration = duration/(60*60) %>
-                <% time = duration + time %>
-              <% end %>
-            <% end %>
+          <% duration = json["duration"]["value"] if json["duration"] != nil%>
+          <% if duration != nil %>
+            <% duration = duration/(60*60) %>
+            <% time = duration + time %>
           <% end %>
         <% end %>
       <% end %>
-  <% end %>
+    <% end %>
 
   <tbody>
       <tr>
