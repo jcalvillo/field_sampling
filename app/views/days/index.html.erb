@@ -27,7 +27,7 @@
   </thead>
 
   <% origin = ERB::Util.url_encode("36.058241, -119.053045") %>
-  <% @dates.order(date: :asc).each do |date| %>
+  <% @dates.each do |date| %>
     <% time = 0.00 %>
     <% duration = 0.00 %>
     <% destinations = date.locations.where(id: date.appointments.pluck(:location_id)).map{|x| [x.latitude, x.longitude].join(',')}.join('|') %>
@@ -40,13 +40,14 @@
       <% dist_json["routes"].each do |section| %>
         <% section["legs"].each do |json| %>
           <% duration = json["duration"]["value"] if json["duration"] != nil%>
-          <% if duration != nil %>
-            <% duration = duration/(60*60) %>
-            <% time = duration + time %>
-          <% end %>
+          <% time = duration + time %>
         <% end %>
       <% end %>
     <% end %>
+    <% if time != nil %>
+      <% time = time/(60*60) %>
+    <% end %>
+
 
   <tbody>
       <tr>
@@ -54,9 +55,9 @@
         <td><%= date.appts_pulls_sum if date.appts_pulls_sum !=0 %></td>
         <td><%= date.appts_pulls_sum*0.5 if date.appts_pulls_sum !=0 %></td>
         <td><%= date.appts_count if date.appts_count !=0 %></td>
-        <td><%= time if time !=0 %></td>
+        <td><%= time.round(2) if time !=0 %></td>
         <td><% total_time = date.appts_pulls_sum*0.5 + time %>
-            <%= total_time if total_time != 0.0 %></td>
+            <%= total_time.round(2) if total_time != 0.0 %></td>
         <td><%= link_to 'Schedule', day_path(date)  %></td>
       </tr>
     <% end %>

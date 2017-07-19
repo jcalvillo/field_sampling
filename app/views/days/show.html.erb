@@ -31,8 +31,8 @@
       <td><%= @date.appointments.sum(:pulls) %></td>
       <td><%= @date.appointments.sum(:pulls)*0.5 %></td>
       <td><%= @date.appointments.size %></td>
-      <td><%= @time %></td>
-      <td><%= @time + @date.appointments.sum(:pulls)*0.5 %></td>
+      <td><%= @time.round(2) %></td>
+      <td><%= @time.round(2) + @date.appointments.sum(:pulls)*0.5 %></td>
     </tr>
   </tbody>
 </table>
@@ -97,6 +97,9 @@
         <% my_url += "&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{appointment.location.latitude},#{appointment.location.longitude}" %>
       <% end %>
       <img src="<%= my_url %>" alt="Area Map" />
+
+
+      <br /><br />
 
       <!-- Location Maps -->
       <h3 align="center">Location Details</h3>
