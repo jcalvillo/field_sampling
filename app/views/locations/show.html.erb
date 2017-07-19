@@ -1,7 +1,8 @@
 <!--heading-->
 <h1>Location Details</h1>
 <%= link_to 'Go back', locations_path %>
-
+<br />
+<br />
 <!--record specification-->
 <table border="1" align="center">
    <thead>
@@ -16,8 +17,8 @@
       <th>  Latitude  </th>
       <th>  Longitude  </th>
     </tr>
-    <thead>
-    <tbody align="center">
+  </thead>
+  <tbody align="center">
     <tr>
       <td><%= @location.client %></td>
       <td><%= @location.city %></td>
@@ -31,45 +32,21 @@
     </tr>
   </tbody>
 </table>
+<br />
 
 <!--associations display-->
-<h2 align="center"><font color=blue>Days scheduled for sampling </font>(at this location)</h2>
-
+<h2 align="center"><font color=blue>Days scheduled for sampling </font>(at this location)</h2><br />
   <% if @location.appointments.size > 0 %>
-
     <table border="1" align="center">
       <tr>
         <th>Date</th>
       </tr>
-
-    <% @location.days.each do |day| %>
-      <tr>
-        <td><%= day.date %></td>
-      </tr>
-    <% end %>
+      <% @location.days.each do |day| %>
+        <tr>
+          <td><%= day.date %></td>
+        </tr>
+      <% end %>
+      <% else %>
+        ...Such a lonely location with no dates<br />
+      <% end %>
     </table>
-
-    <% else %>
-      ...Such a lonely location with no dates<br />
-  <% end %>
-<hr>
-
-<!--change associations?-->
-<h2><font color=blue>All Scheduled Days </font>(at this location)</h2>
-
-Checkboxes are marked for every day this is scheduled. <br />
-<div class='instructions'>
-  <div class='inlineBlock'>
-    <p>To add:</p>
-    <p>To remove:</p>
-  </div>
-  <div class='inlineBlock'>
-    </p>&#10004 SUBMIT</p>
-    <p>&#x25A2 SUBMIT</p>
-  </div>
-</div>
-
-<%= simple_form_for @location do |f| %>
-  <%= f.association :days, as: :check_boxes, collection: @location.days, label_method: :date, value_method: :id %><br/>
-  <%= f.button :submit, 'Submit' %>
-<% end %>
