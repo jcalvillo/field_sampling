@@ -11,6 +11,10 @@ GoogleMapsService.configure do |config|
   config.key = 'AIzaSyAtEhW3fIf9xkfpRZ8f_HEkV3pk2zxqsvI'
 end
 
+# for use with heroku user management
+require 'rack/wwwhisper'
+use Rack::WWWhisper
+
 # Initialize client using global parameters
 gmaps = GoogleMapsService::Client.new
 

@@ -45,6 +45,9 @@ gem 'simple_form'
 gem 'google-api-client'
 gem 'google_maps_service'
 
+# for use with heroku user management
+gem 'rack-wwwhisper', '~> 1.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
