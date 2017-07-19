@@ -131,7 +131,7 @@
       <p>&#x25A2 SUBMIT</p>
     </div>
   </div>
-        <%= f.association :locations, as: :check_boxes, collection: @locations, label_method: :cb_label, value_method: :id, item_wrapper_class: 'checkbox_class' %><br />
+        <%= f.association  :locations, as: :check_boxes, collection: @locations, label_method: :cb_label, value_method: :id, item_wrapper_class: 'checkbox_class' %><br />
         <%= f.button :submit, 'Update', class: "update_btn" %>
     <% end %><br />
   </div>

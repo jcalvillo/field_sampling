@@ -37,17 +37,18 @@
 
   <% @locations.order(client: :asc).each do |location| %>
     <tr>
-        <td>&nbsp&nbsp<%= location.client %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp<%= location.city %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp<%= location.ranchfield %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp<%= location.grower %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp<%= location.siteblock %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp<%= location.variety %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp<%= location.acres %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp<%= location.latitude %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp<%= location.longitude %>&nbsp&nbsp</td>
-        <td>&nbsp&nbsp(<%= link_to 'Edit', edit_location_path(location) %> | <%= link_to 'Destroy', location, method: :delete %>) 
-        <%= link_to 'Schedule', location_path(location)  %>&nbsp&nbsp</td>
+        <td><%= location.client %></td>
+        <td><%= location.city %></td>
+        <td><%= location.ranchfield %></td>
+        <td><%= location.grower %></td>
+        <td><%= location.siteblock %></td>
+        <td><%= location.variety %></td>
+        <td><%= location.acres %></td>
+        <td><%= location.latitude %></td>
+        <td><%= location.longitude %></td>
+        <td><%= link_to 'Edit', edit_location_path(location) %><br />
+          <%= link_to 'Destroy', location, method: :delete %><br />
+          <%= link_to 'Schedule', location_path(location)  %></td>
      </tr>
       <% end %>
     </tbody>
