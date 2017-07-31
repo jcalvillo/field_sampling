@@ -53,10 +53,10 @@
       <tr>
         <td><%= date.date %></td>
         <td><%= date.appts_pulls_sum if date.appts_pulls_sum !=0 %></td>
-        <td><%= date.appts_pulls_sum*0.5 if date.appts_pulls_sum !=0 %></td>
+        <td><%= date.appts_pulls_sum*0.75 if date.appts_pulls_sum !=0 %></td>
         <td><%= date.appts_count if date.appts_count !=0 %></td>
         <td><%= time.round(2) if time !=0 %></td>
-        <td><% total_time = date.appts_pulls_sum*0.5 + time %>
+        <td><% total_time = date.appts_pulls_sum*0.75 + time %>
             <%= total_time.round(2) if total_time != 0.0 %></td>
         <td><%= link_to 'Schedule', day_path(date)  %></td>
       </tr>
