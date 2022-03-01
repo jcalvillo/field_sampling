@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby "2.7.0"
 
+# needed to fix compatibility issues of updating to Ruby 2.7
+gem 'bigdecimal', '1.3.5'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.11'
 # Use sqlite3 as the database for Active Record
