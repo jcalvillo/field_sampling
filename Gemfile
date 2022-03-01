@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.7.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.11'
@@ -27,7 +28,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',          group: :development
 
 #for windows
-gem 'tzinfo-data',          platforms: [:mingw, :mswin, :x64_mingw]
+gem 'tzinfo-data',          platforms: [:mingw, :mswin]
 
 #suggested upon >git push heroku master
 gem 'rails_12factor'
