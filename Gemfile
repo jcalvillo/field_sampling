@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',          group: :development
 
 #for windows
-gem 'tzinfo-data',          platforms: [:mingw, :mswin, :x64_mingw]
+gem 'tzinfo-data',          platforms: [:ruby, :ruby_18]
 
 #suggested upon >git push heroku master
 gem 'rails_12factor'
