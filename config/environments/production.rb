@@ -77,5 +77,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # for use with heroku user management
-  config.middleware.insert 0, "Rack::WWWhisper"
+  config.middleware.insert 0, Rack::WWWhisper
 end
